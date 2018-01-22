@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>正则表达式删除两端多余空白字符</title>
+
+</head>
+<body>
+
+</body>
+<script>
+	/**
+	 * 在String对象的原型链上定义一个方法用于清除字符串两端的空格
+	 * 定义一个正则表达式的匹配规则，查找字符串两端的空格字符，
+	 * 调用string对象的replace方法清除匹配到的空格字符，即是使用空字符替换空格字符
+	 * @return {[string]} [返回最终清除两端空格后的新字符串]
+	 */
+	String.prototype.clearStrSpace = function() {
+		let  _this = this;
+		// 匹配以0个或多个空格开头或者结尾是以0个或多个空格结尾
+		const reg = /^\s*|\s*$/g;
+		// 使用string对象的replace方法来清除找到的空格,使用空字符替换空格
+		return _this.replace(reg, '');
+	};
+
+	let str = '  scriptOJ  ';
+	console.log(str.clearStrSpace());
+</script>
+</html>
