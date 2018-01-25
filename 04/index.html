@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>分页判断</title>
+</head>
+<body>
+<script>
+const getPages = (total, itemsPerPage) => {
+	// 避免每页条数为零，并且页数不是整数的情况
+	return itemsPerPage === 0 ? 0 : Math.ceil(total/itemsPerPage)
+}
+getPages(105, 10); // 11
+</script>
+</body>
+</html>
