@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const data = {
+                rows: [
+                    ["Tom", 25, 'male', "1993-01-02"],
+                    ["Sara", 24, 'female', "1994-02-20"]
+                ],
+                metaData: [{
+                    name: "name",
+                    note: ""
+                }, {
+                    name: "age",
+                    note: ""
+                }, {
+                    name: "gender",
+                    note: ""
+                }, {
+                    name: "birthday",
+                    note: ""
+                }]
+            }
+            /**
+             * ES3 双循环
+             * @param a rows
+             * @param b metaData
+             * @return 返回最終的格式
+             */
+        function generateFormatData1(a, b) {
+            console.time()
+            let ret = []
+            for (let i = 0; i < a.length; i++) {
+                let item = a[i]
+                let obj = {}
+                for (let j = 0; j < item.length; j++) {
+                    obj[b[j].name] = item[j]
+                }
+                ret.push(obj)
+            }
+            console.timeEnd()
+            return ret
+        }
+
+        let arr = generateFormatData1(data.rows, data.metaData)
+        console.log(arr)
+            /**
+             * map() + forEach
+             * @param a rows
+             * @param b metaData
+             * @return 返回最終的格式
+             */
+        function generateFormatData2(a, b) {
+            console.time()
+            let ret = []
+            a.map(function(i, m) {
+                let obj = {}
+                i.forEach(function(j, n) {
+                    obj[b[n].name] = j
+                })
+                ret.push(obj)
+            })
+            console.timeEnd()
+            return ret
+        }
+        let arr2 = generateFormatData2(data.rows, data.metaData)
+        console.log(arr2)
+    </script>
+</body>
+
+</html>
